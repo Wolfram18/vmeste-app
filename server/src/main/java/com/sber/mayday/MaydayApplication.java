@@ -15,6 +15,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
+import java.util.Collections;
 import java.util.Properties;
 
 @SpringBootApplication
@@ -23,8 +24,12 @@ import java.util.Properties;
         DataSourceTransactionManagerAutoConfiguration.class, //
         HibernateJpaAutoConfiguration.class })
 public class MaydayApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(MaydayApplication.class, args);
+        SpringApplication app = new SpringApplication(MaydayApplication.class);
+        app.setDefaultProperties(Collections
+                .singletonMap("server.port", "8080"));
+        app.run(args);
     }
 
     @Autowired

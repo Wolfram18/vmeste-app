@@ -115,7 +115,7 @@ class CreatePostCard extends Component {
                                                         <label className="upload-button" htmlFor={id}>
                                                             <Button variant="contained" color="primary" component="span">
                                                                 Загрузить фото
-                                                        </Button>
+                                                            </Button>
                                                         </label>
                                                     </div>
                                             }

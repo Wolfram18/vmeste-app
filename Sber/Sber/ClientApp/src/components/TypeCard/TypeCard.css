@@ -27,11 +27,11 @@
     width: 150px;
     height: 150px;
     border-radius: 100px;
-    background-color: #ff5a5f;
+    background-color: #BCE784;
     position: absolute;
     top: 0px;
     left: 120px;
-    font-size: 25px;
+    font-size: 34px;
 }
 
 .content-type-audio {
@@ -41,11 +41,11 @@
     width: 120px;
     height: 120px;
     border-radius: 60px;
-    background-color: #ff9770;
+    background-color: #348AA7;
     position: absolute;
     top: 130px;
     left: 140px;
-    font-size: 25px;
+    font-size: 27px;
 }
 
 .content-type-text {
@@ -55,11 +55,11 @@
     width: 150px;
     height: 150px;
     border-radius: 75px;
-    background-color: #c81d25;
+    background-color: #BCE784;
     position: absolute;
     top: 140px;
     left: 0px;
-    font-size: 25px;
+    font-size: 39px;
 }
 
 .content-type-img {
@@ -69,10 +69,11 @@
     width: 130px;
     height: 130px;
     border-radius: 65px;
-    background-color: #c44536;
+    background-color: #5DD39E;
     position: absolute;
     top: 10px;
     left: 10px;
+    font-size: 27px;
 }
 
 .content-type-doc {
@@ -82,11 +83,11 @@
     width: 150px;
     height: 150px;
     border-radius: 75px;
-    background-color: #c81d25;
+    background-color: #5DD39E;
     position: absolute;
     top: 260px;
     left: 130px;
-    font-size: 25px;
+    font-size: 29px;
 }
 
 .content-type-vote {
@@ -96,11 +97,11 @@
     width: 120px;
     height: 120px;
     border-radius: 60px;
-    background-color: #c81d25;
+    background-color: #C0D8CC;
     position: absolute;
     top: 310px;
     left: 30px;
-    font-size: 25px;
+    font-size: 31px;
 }
 
 .content-type-graph {
@@ -110,11 +111,11 @@
     width: 130px;
     height: 130px;
     border-radius: 65px;
-    background-color: #c81d25;
+    background-color: #F4F1DE;
     position: absolute;
     top: 400px;
     left: 130px;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .content-type-a {
@@ -124,11 +125,11 @@
     width: 130px;
     height: 130px;
     border-radius: 65px;
-    background-color: #c81d25;
+    background-color: #BCE784;
     position: absolute;
     top: 480px;
     left: 7px;
-    font-size: 25px;
+    font-size: 27px;
 }
 
 .content-type-sticker {
@@ -138,11 +139,11 @@
     width: 150px;
     height: 150px;
     border-radius: 75px;
-    background-color: #c81d25;
+    background-color: #348AA7;
     position: absolute;
     top: 560px;
     left: 120px;
-    font-size: 25px;
+    font-size: 32px;
 }
 
 .content-type-geo {
@@ -152,11 +153,11 @@
     width: 140px;
     height: 140px;
     border-radius: 70px;
-    background-color: #c81d25;
+    background-color: #5DD39E;
     position: absolute;
     top: 630px;
     left: 5px;
-    font-size: 25px;
+    font-size: 27px;
 }
 
 .type-post-header {

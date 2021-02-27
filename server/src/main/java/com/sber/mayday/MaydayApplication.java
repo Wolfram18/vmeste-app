@@ -3,11 +3,16 @@ package com.sber.mayday;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Collections;
+
 @SpringBootApplication
 public class MaydayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MaydayApplication.class, args);
+        SpringApplication app = new SpringApplication(MaydayApplication.class);
+        app.setDefaultProperties(Collections
+                .singletonMap("server.port", "8080"));
+        app.run(args);
     }
 
 }

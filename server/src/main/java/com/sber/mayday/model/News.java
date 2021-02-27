@@ -11,7 +11,7 @@ public class News {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -20,7 +20,7 @@ public class News {
     private String author;
 
     @Column(name = "text")
-    private List<String> text;
+    private String text;
 
     @Column(name = "date")
     private Date date;
@@ -43,11 +43,11 @@ public class News {
     @Column(name = "ratings")
     private int ratings;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -67,11 +67,11 @@ public class News {
         this.author = author;
     }
 
-    public List<String> getText() {
+    public String getText() {
         return text;
     }
 
-    public void setText(List<String> text) {
+    public void setText(String text) {
         this.text = text;
     }
 

@@ -1,6 +1,7 @@
 package webgrumpyfox.webgrumpyfox.config;
 
 import com.sber.mayday.config.HibernateConfig;
+import com.sber.mayday.config.WebConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

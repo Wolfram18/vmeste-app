@@ -17,7 +17,7 @@ class TypeCard extends Component {
     handleClick = (event) => {
         var arr = [...this.props.content, event.target.id]
         this.props.onContent(arr)
-        console.log(this.props.content)
+        this.props.onCount(arr.length)
     }
 
     render() {
@@ -27,7 +27,7 @@ class TypeCard extends Component {
                     <div className="type-post-header">
                         <h3>ДОБАВЬТЕ КОНТЕНТ</h3>
                     </div>
-                    <div className="card-padding">
+                    <div className="type-card-padding">
                         <div className="container-add-content">
                             <div onClick={this.handleClick} id="video" className="content-type-video">
                                 ВИДЕО
@@ -76,6 +76,7 @@ const mapStateToProps = state => {
 const mapDispachToProps = dispatch => {
     return {
         onContent: value => dispatch({ type: "content", value: value }),
+        onCount: value => dispatch({ type: "count", value: value }),
     };
 };
 

@@ -7,6 +7,22 @@ import java.util.List;
 @Entity
 @Table(name = "news")
 public class News {
+    @Override
+    public String toString() {
+        return "News{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", main_rating=" + main_rating +
+                ", tags='" + tags + '\'' +
+                ", video='" + video + '\'' +
+                ", image='" + image + '\'' +
+                ", sound='" + sound + '\'' +
+                ", ratings='" + ratings + '\'' +
+                '}';
+    }
 
     @Id
     @Column(name = "id")

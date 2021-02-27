@@ -8,17 +8,23 @@ import { connect } from "react-redux";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 class CreatePostCard extends Component {
-
+         
     constructor(props) {
         super(props);
         this.state = {
             tags: ["Нейросети", "Web разработка", "IOS разработка", "AV/VR разработка"],
             type: false,
             elements: [],
-            count: 1
+            count: 1,
+            news: [],
+            isLoading: false
         }
+        fetch('http://localhost:8080/api/create/news/')
+            .then(response => response.json())
+            .then(data => this.setState({ news: data, isLoading: false }));
+        this.setState({ isLoading: true });
     }
-
+    
     handleClick = () => {
         this.props.onContent(["a"]);
         console.log(this.props.content)
@@ -69,8 +75,12 @@ class CreatePostCard extends Component {
         this.props.onCount(arr.length)
     }
 
+    componentDidUpdate() {
+        alert(this.state.news.id + ' ' + this.state.news.name);
+    }
+
     render() {
-        return (
+        return (            
             <div className="container-cards">
                 <div className="create-post-card">
                     <div className="container-create-post">

@@ -1,0 +1,10 @@
+﻿body {
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(11, 57, 84, 0.89) 0%, rgba(8, 126, 139, 0.19) 113.38%) no-repeat;
+}
+
+.main-container {
+    margin-top: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+}

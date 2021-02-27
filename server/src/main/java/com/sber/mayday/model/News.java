@@ -13,35 +13,35 @@ public class News {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "nameNews")
     private String name;
 
-    @Column(name = "author")
+    @Column(name = "authorNews")
     private String author;
 
-    @Column(name = "text")
+    @Column(name = "textNews")
     private String text;
 
-    @Column(name = "date")
+    @Column(name = "dateNews")
     private Date date;
 
-    @Column(name = "main_rating")
+    @Column(name = "mainRatingNews")
     private int main_rating;
 
-    @Column(name = "tags")
+    @Column(name = "tagsNews")
     private String tags;
 
-    @Column(name = "video")
+    @Column(name = "videoNews")
     private String video;
 
-    @Column(name = "image")
+    @Column(name = "imageNews")
     private String image;
 
-    @Column(name = "sound")
+    @Column(name = "soundNews")
     private String sound;
 
-    @Column(name = "ratings")
-    private int ratings;
+    @Column(name = "ratingsNews")
+    private String ratings;
 
     public int getId() {
         return id;
@@ -123,11 +123,11 @@ public class News {
         this.sound = sound;
     }
 
-    public int getRatings() {
+    public String getRatings() {
         return ratings;
     }
 
-    public void setRatings(int ratings) {
+    public void setRatings(String ratings) {
         this.ratings = ratings;
     }
 }

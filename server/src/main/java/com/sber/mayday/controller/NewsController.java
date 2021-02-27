@@ -1,26 +1,27 @@
 package com.sber.mayday.controller;
 
+import com.sber.mayday.dao.NewsDAOImpl;
 import com.sber.mayday.model.News;
 import com.sber.mayday.service.NewsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-@RestController
+@Controller
 public class NewsController {
 
-    private final NewsService newsService;
+    @Autowired
+    private NewsDAOImpl newsDAOImpl;
 
-    public NewsController(NewsService newsService) {
-        this.newsService = newsService;
-    }
-    
-    @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/main")
-    public Collection<News> newses() {
-        return newsService.allNews();
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String showBankAccounts(Model model) {
+        System.out.println();
+        model.addAttribute("accountInfos", newsDAOImpl.getById(1));
+
+        return "accountsPage";
     }
 }

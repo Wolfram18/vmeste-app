@@ -5,6 +5,13 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import reducer from './store/reducer';
+
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
@@ -12,9 +19,9 @@ const rootElement = document.getElementById('root');
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#27678d',
+            main: '#00afb9',
             light: '#666ad1',
-            dark: '#001970',
+            dark: '#0081a7',
         },
         secondary: {
             main: '#FF355D',
@@ -27,7 +34,9 @@ const theme = createMuiTheme({
 ReactDOM.render(
     <BrowserRouter basename={baseUrl}>
         <MuiThemeProvider theme={theme}>
-            <App />
+            <Provider store={store}>
+                <App />
+            </Provider>
         </MuiThemeProvider>
     </BrowserRouter>,
     rootElement);

@@ -1,0 +1,10 @@
+﻿body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #CED4DA 0%, #F8F9FA 113.38%);
+    padding-top: 30px;
+}
+
+.main-container {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-style: normal;
+}

@@ -14,9 +14,6 @@ public class NewsController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showBankAccounts(Model model) {
-        System.out.println(newsService.getById(1).getName());
-        //model.addAttribute("accountInfos", newsServiceImpl.getById(1));
-
-        return "accountsPage";
+        return newsService.getById(1).toString();
     }
 }

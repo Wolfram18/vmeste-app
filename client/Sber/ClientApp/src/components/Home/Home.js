@@ -54,7 +54,8 @@ export class Home extends Component {
             .then(data => {
                 console.log(data);
                 array.push(data);
-                this.setState({ posts: array })
+                console.log(data.news);                
+                this.setState({ posts: data.news })
             });
     }
 

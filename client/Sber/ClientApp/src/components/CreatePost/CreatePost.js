@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import './CreatePost.css';
-import CreatePostCard from '../CreatePostCard/CreatePostCard'
+import CreatePostCard from '../CreatePostCard/CreatePostCard';
 
 class CreatePost extends Component {
          

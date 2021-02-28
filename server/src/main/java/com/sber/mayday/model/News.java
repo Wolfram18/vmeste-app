@@ -1,12 +1,28 @@
 package com.sber.mayday.model;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "news")
 public class News {
+
+    public News(String name, String author, String text, String date, int main_rating, String tags, String video, String image, String sound, String ratings) {
+        this.name = name;
+        this.author = author;
+        this.text = text;
+        this.date = date;
+        this.main_rating = main_rating;
+        this.tags = tags;
+        this.video = video;
+        this.image = image;
+        this.sound = sound;
+        this.ratings = ratings;
+    }
+
+    public News() {
+
+    }
+
     @Override
     public String toString() {
         return "News{" +
@@ -39,7 +55,7 @@ public class News {
     private String text;
 
     @Column(name = "dateNews")
-    private Date date;
+    private String date;
 
     @Column(name = "mainRatingNews")
     private int main_rating;
@@ -91,11 +107,11 @@ public class News {
         this.text = text;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

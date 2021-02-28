@@ -4,9 +4,10 @@ import com.sber.mayday.model.AjaxResponseBody;
 import com.sber.mayday.model.News;
 import com.sber.mayday.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 @RestController
 public class NewsController {
@@ -20,18 +21,40 @@ public class NewsController {
 //    }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(value = "/api/create/news/")
-    public AjaxResponseBody getSearchResultViaAjax() {
+    @GetMapping(value = "/api/select/all")
+    public AjaxResponseBody selectAllNewsFromDB() {
 
         AjaxResponseBody result = new AjaxResponseBody();
 
-        News news = newsService.getById(1);
+        List<News> news = newsService.allNews();
+
+        if (!news.isEmpty()) {
+            result.setCode("200");
+            result.setMsg("");
+            result.setNews(news);
+        } else {
+            result.setCode("204");
+            result.setMsg("No user!");
+        }
+
+        return result;
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(value = "/api/create/post")
+    public AjaxResponseBody createNews(String nameNews, String authorNews,String textNews, String dateNews,
+                                       String tagsNews, String ratingNews, String imageNews) {
+
+        AjaxResponseBody result = new AjaxResponseBody();
+
+        News news =new News(nameNews, authorNews, textNews, dateNews,
+                5, tagsNews, "", imageNews, "",  ratingNews);
+
+        newsService.add(news);
 
         if (!news.getName().equals("")) {
             result.setCode("200");
             result.setMsg("");
-            result.setName(news.getName());
-            result.setId(news.getId());
         } else {
             result.setCode("204");
             result.setMsg("No user!");

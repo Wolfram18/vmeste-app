@@ -5,10 +5,12 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import TypeCard from '../TypeCard/TypeCard'
 import { connect } from "react-redux";
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:8080/';
 
 class CreatePostCard extends Component {
-         
+
     constructor(props) {
         super(props);
         this.state = {
@@ -16,15 +18,16 @@ class CreatePostCard extends Component {
             type: false,
             elements: [],
             count: 1,
-            news: [],
-            isLoading: false
+            nameNews: '',
+            authorNews: '',
+            textNews: '',
+            dateNews: '',
+            tagsNews: '',
+            ratingNews: '',
+            imageNews: '',
         }
-        fetch('http://localhost:8080/api/create/news/')
-            .then(response => response.json())
-            .then(data => this.setState({ news: data, isLoading: false }));
-        this.setState({ isLoading: true });
     }
-    
+
     handleClick = () => {
         this.props.onContent(["a"]);
         console.log(this.props.content)
@@ -75,12 +78,37 @@ class CreatePostCard extends Component {
         this.props.onCount(arr.length)
     }
 
-    componentDidUpdate() {
-        alert(this.state.news.id + ' ' + this.state.news.name);
+    handleSavePost = (event) => {
+
+        var tags = ''
+        for (var i = 0; i < document.getElementsByClassName('MuiChip-root MuiAutocomplete-tag MuiChip-deletable').length; i++) {
+            tags += document.getElementsByClassName('MuiChip-root MuiAutocomplete-tag MuiChip-deletable')[i].outerText + ','
+        }
+        tags = tags.slice(0, tags.length - 1);
+
+        const post = {
+            nameNews: this.state.nameNews,
+            authorNews: 'Неизвестный разработчик',
+            textNews: document.getElementById('outlined-textarea0') ? document.getElementById('outlined-textarea0').value : '',
+            dateNews: new Date(),
+            tagsNews: tags,
+            ratingNews: 'actual=1, interest=1, profit=1',
+            imageNews: 'images/user2.png',
+        };
+
+        axios.post('/api/create/post', {}, { params: post })
+            .then(response => response.data)
+            .then(data => {
+                console.log(data);
+            });
+    }
+
+    handleChangeNameNews = (event) => {
+        this.setState({ nameNews: event.target.value });
     }
 
     render() {
-        return (            
+        return (
             <div className="container-cards">
                 <div className="create-post-card">
                     <div className="container-create-post">
@@ -92,6 +120,8 @@ class CreatePostCard extends Component {
                                 <TextField
                                     variant="outlined"
                                     label="Тема новости"
+                                    value={this.state.nameNews}
+                                    onChange={this.handleChangeNameNews}
                                     placeholder="Введите тему новости"
                                     className="theme-textfield"
                                 />
@@ -108,7 +138,7 @@ class CreatePostCard extends Component {
                                                         <div key={index} className="container-item">
                                                             <TextField
                                                                 key={index}
-                                                                id="outlined-textarea"
+                                                                id={"outlined-textarea" + index}
                                                                 label="Текст к посту"
                                                                 placeholder="Введите текст"
                                                                 multiline
@@ -186,9 +216,9 @@ class CreatePostCard extends Component {
                                 />
                             </div>
                             <div className="container-button-create">
-                                <Button className="button-create-post" variant="contained" color="primary" style={{ fontFamily: "Yanone Kaffeesatz, sans-serif", fontSize: "25px" }}>
+                                <Button onClick={this.handleSavePost} className="button-create-post" variant="contained" color="primary" style={{ fontFamily: "Yanone Kaffeesatz, sans-serif", fontSize: "25px" }}>
                                     опубликовать
-                        </Button>
+                                </Button>
                             </div>
                         </div>
                     </div>

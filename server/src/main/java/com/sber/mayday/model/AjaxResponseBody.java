@@ -1,14 +1,23 @@
 package com.sber.mayday.model;
 
+
+import java.util.List;
+
 public class AjaxResponseBody {
 
     String msg;
-
     String code;
 
-    int id;
+    List<News> news;
 
-    String name;
+    @Override
+    public String toString() {
+        return "AjaxResponseBody{" +
+                "msg='" + msg + '\'' +
+                ", code='" + code + '\'' +
+                ", news=" + news +
+                '}';
+    }
 
     public String getMsg() {
         return msg;
@@ -26,29 +35,11 @@ public class AjaxResponseBody {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
+    public List<News> getNews() {
+        return news;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "AjaxResponseBody{" +
-                "msg='" + msg + '\'' +
-                ", code='" + code + '\'' +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public void setNews(List<News> news) {
+        this.news = news;
     }
 }

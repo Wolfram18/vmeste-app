@@ -223,11 +223,17 @@ function PostCard(props) {
             setStarsInterest(arr)
     }
 
+    const [tags, setTags] = React.useState(null);
 
     useEffect(() => {
-        setCountStars(props.post.marks.actual.slice(0, 2), "actual")
-        setCountStars(props.post.marks.profit.slice(0, 2), "profit")
-        setCountStars(props.post.marks.interest.slice(0, 2), "interest")
+        var tagsArray = props.post.tagsNews.split(',');
+        setTags(tagsArray);
+
+        var ratingArray = props.post.ratingNews.split(',');
+
+        setCountStars(ratingArray[0].split('=')[1], "actual")
+        setCountStars(ratingArray[2].split('=')[1], "profit")
+        setCountStars(ratingArray[1].split('=')[1], "interest")
     }, []);
 
     return (
@@ -239,7 +245,7 @@ function PostCard(props) {
                             style={{ paddingBottom: "5px" }}
                             className={classes.cardHeader}
                             avatar={
-                                <Avatar aria-label="recipe" src={props.post.img} className={classes.avatar}>
+                                <Avatar aria-label="recipe" src={props.post.imageNews} className={classes.avatar}>
 
                                 </Avatar>
                             }
@@ -250,16 +256,11 @@ function PostCard(props) {
                                     color="textSecondary"
                                     component="p"
                                 >
-                                    {
-                                        props.post.position ?
-                                            props.post.position + " "
-                                            : null
-                                    }
-                                    {props.post.author !== null
-                                        ? props.post.author
+                                    {props.post.authorNews !== null
+                                        ? props.post.authorNews
                                         : null}
                                     <br />
-                                    {props.post.date}
+                                    {props.post.dateNews.split('T')[0] + ' ' + props.post.dateNews.split('T')[1].split('.')[0]}
                                 </Typography>
                             }
                         />
@@ -268,9 +269,9 @@ function PostCard(props) {
                             onClick={() => history.push(`/`)}
                             title={
                                 <Typography variant="h6" component="p">
-                                    {props.post.theme.length > 20
-                                        ? props.post.theme.slice(0, 16) + "..."
-                                        : props.post.theme}
+                                    {props.post.nameNews.length > 20
+                                        ? props.post.nameNews.slice(0, 16) + "..."
+                                        : props.post.nameNews}
                                 </Typography>
                             }
                         />
@@ -280,8 +281,8 @@ function PostCard(props) {
                         >
                             <CardContent style={{ paddingBottom: "5px", paddingTop: "5px" }}>
                                 <Typography variant="body2" component="p">
-                                    Тэги: {props.post.tags ?
-                                        props.post.tags.map((tag, index) => {
+                                    Тэги: {tags ?
+                                        tags.map((tag, index) => {
                                             return <Tag key={index} tag={tag} />
                                         })
                                         : "Не указаны"}
@@ -289,11 +290,11 @@ function PostCard(props) {
                             </CardContent>
                             <CardContent style={{ paddingBottom: "0" }}>
                                 <Typography variant="body2" component="p">
-                                    {props.post.text ? props.post.text.length >= 780 ?
+                                    {props.post.textNews ? props.post.textNews.length >= 780 ?
                                         <>
-                                            {props.post.text.slice(0, 780)}
+                                            {props.post.textNews.slice(0, 780)}
                                             <label className="read-article">Читать далее</label>
-                                        </> : props.post.text : null}
+                                        </> : props.post.textNews : null}
                                 </Typography>
                             </CardContent>
                         </div>

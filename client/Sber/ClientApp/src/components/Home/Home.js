@@ -2,6 +2,9 @@
 import PostCard from '../PostCard/PostCard';
 import './Home.css';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:8080/';
 
 export class Home extends Component {
 
@@ -38,8 +41,21 @@ export class Home extends Component {
                     },
                     img: "images/user2.png"
                 },
-            ]
+            ],
+
+            posts: [],
         }
+    }
+
+    componentDidMount() {
+        var array = [];
+        axios.get('/api/select/all')
+            .then(response => response.data)
+            .then(data => {
+                console.log(data);
+                array.push(data);
+                this.setState({ posts: array })
+            });
     }
 
     render() {
@@ -47,7 +63,7 @@ export class Home extends Component {
             <div className="container-home">
                 <Button style={{ fontFamily: "Yanone Kaffeesatz, sans-serif", fontSize: "25px", width: (window.screen.availWidth > 320) ? "600px" : "280px", marginBottom: "20px" }} variant="contained" color="secondary" onClick={() => this.props.history.push("/createpost")}>Создать новость</Button>
                 {
-                    this.state.post.map((post, index) => {
+                    this.state.posts.map((post, index) => {
                         return <PostCard key={index} post={post} />
                     })
                 }

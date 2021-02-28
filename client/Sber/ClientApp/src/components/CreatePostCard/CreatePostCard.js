@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import TypeCard from '../TypeCard/TypeCard'
 import { connect } from "react-redux";
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 class CreatePostCard extends Component {
          
@@ -19,12 +18,15 @@ class CreatePostCard extends Component {
             news: [],
             isLoading: false
         }
-        fetch('http://localhost:8080/api/create/news/')
-            .then(response => response.json())
-            .then(data => this.setState({ news: data, isLoading: false }));
-        this.setState({ isLoading: true });
     }
-    
+
+    componentDidMount() {
+        //fetch('http://localhost:8080/api/create/news/')
+        //    .then(response => response.json())
+        //    .then(data => this.setState({ news: data, isLoading: false }));
+        //this.setState({ isLoading: true });
+    }
+
     handleClick = () => {
         this.props.onContent(["a"]);
         console.log(this.props.content)
@@ -75,9 +77,9 @@ class CreatePostCard extends Component {
         this.props.onCount(arr.length)
     }
 
-    componentDidUpdate() {
-        alert(this.state.news.id + ' ' + this.state.news.name);
-    }
+    //componentDidUpdate() {
+    //    alert(this.state.news.id + ' ' + this.state.news.name);
+    //}
 
     render() {
         return (            
@@ -188,7 +190,7 @@ class CreatePostCard extends Component {
                             <div className="container-button-create">
                                 <Button className="button-create-post" variant="contained" color="primary" style={{ fontFamily: "Yanone Kaffeesatz, sans-serif", fontSize: "25px" }}>
                                     опубликовать
-                        </Button>
+                                </Button>
                             </div>
                         </div>
                     </div>

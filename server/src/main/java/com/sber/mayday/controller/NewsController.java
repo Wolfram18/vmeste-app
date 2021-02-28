@@ -20,7 +20,7 @@ public class NewsController {
 //    }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(value = "/api/create/news/")
+    @GetMapping(value = "/api/select/all")
     public AjaxResponseBody getSearchResultViaAjax() {
 
         AjaxResponseBody result = new AjaxResponseBody();
@@ -30,8 +30,14 @@ public class NewsController {
         if (!news.getName().equals("")) {
             result.setCode("200");
             result.setMsg("");
-            result.setName(news.getName());
-            result.setId(news.getId());
+            result.setIdNews(news.getId());
+            result.setNameNews(news.getName());
+            result.setAuthorNews(news.getAuthor());
+            result.setTextNews(news.getText());
+            result.setDateNews(news.getDate());
+            result.setTagsNews(news.getTags());
+            result.setRatingNews(news.getRatings());
+            result.setImageNews(news.getImage());
         } else {
             result.setCode("204");
             result.setMsg("No user!");
